@@ -15,7 +15,7 @@ module.exports = {
 
   create: function (req,res) {
       var newBook = req.body;
-      newBook.create(newBook, function (err, savedBook) {
+      Book.create(newBook, function (err, savedBook) {
         err ? res.status(500).json({ error: err.message }) :
           Watcher.tally('CREATE','Book');
           res.status(201).json(savedBook);
