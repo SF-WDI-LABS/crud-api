@@ -1,5 +1,34 @@
 # <img src="https://cloud.githubusercontent.com/assets/7833470/10899314/63829980-8188-11e5-8cdd-4ded5bcb6e36.png" height="60"> Super CRUD
 
+## ESLint for Linting and Auto-fix
+
+This project uses [eslint](http://eslint.org/)! The base configuration is [standard JS](https://standardjs.com/), with additional rules as defined in [.eslintrc.json](.eslintrc.json).  
+
+To run the linter on this project without changing files, use the following command line command:
+
+```
+./node_modules/eslint/bin/eslint.js ./
+```
+
+If you would like ESLint and standard to automatically fix linting issues, use the `--fix` option:
+
+
+```
+./node_modules/eslint/bin/eslint.js ./ --fix
+```
+
+Especially when using the --fix option, prefer to lint one file or directory at a time by specifying a path within the project:
+
+```
+./node_modules/eslint/bin/eslint.js ./controllers/index.js ./controllers/utils.js
+```
+
+As a shorthand to run the linter on the entire project directory, you can use `npm run lint`.
+
+Ingored directories and files are listed in  [.eslintignore](.eslintignore).
+
+
+
 ## Base URL
 
 <a href="https://super-crud.herokuapp.com" target="_blank">https://super-crud.herokuapp.com</a>

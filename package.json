@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "debug": "node-debug server.js"
+    "debug": "node-debug server.js",
+    "lint": "./node_modules/eslint/bin/eslint.js ./; exit 0"
   },
   "repository": {
     "type": "git",
@@ -24,7 +25,14 @@
     "mongoose": "^4.9.3"
   },
   "devDependencies": {
-    "node-inspector": "0.12.3"
+    "eslint": "^3.19.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.3.0",
+    "eslint-plugin-node": "^5.0.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "node-inspector": "^1.1.1",
+    "standard": "^10.0.2"
   },
   "homepage": "https://github.com/sf-wdi-labs/super-crud-api#readme"
 }
