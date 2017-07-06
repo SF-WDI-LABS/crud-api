@@ -1,9 +1,9 @@
 // require express and other modules
-var express = require('express'),
-    app = express(),
-    cors = require('cors'),
-    bodyParser = require('body-parser'),
-    mongoose = require('mongoose');
+var express = require('express');
+var app = express();
+var cors = require('cors');
+var bodyParser = require('body-parser');
+var path = require('path');
 
 // configure cors (for allowing cross-origin requests)
 app.use(cors());
@@ -13,18 +13,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 // serve static files from public folder
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(path.join(__dirname, 'public')));
 
 // set view engine to ejs
 app.set('view engine', 'ejs');
-
-
-
-// require models and seed data
-var seedBooks = require('./seeds/books'),
-    seedWines = require('./seeds/wines'),
-    seedPokemon = require('./seeds/pokemon'),
-    seedTodo = require('./seeds/todos');
 
 var ctrl = require('./controllers');
 
@@ -45,11 +37,9 @@ app.route('/books/:bookId')
   .put(ctrl.books.update)
   .delete(ctrl.books.destroy);
 
-
-
 app.route('/pokemon')
   .get(ctrl.pokemon.index)
-  .post(ctrl.pokemon.create)
+  .post(ctrl.pokemon.create);
 
 app.get('/pokemon/nuke', ctrl.pokemon.nuke);
 
@@ -82,17 +72,20 @@ app.route('/todos/:todoId')
 
 // HOME & RESET ROUTES
 
-app.get('/', function (req, res) {
+app.get('/', function(req, res) {
   res.render('site/index');
 });
 
-app.get('/reset', function (req, res) {
+app.get('/reset', function(req, res) {
   res.render('site/reset');
 });
 
-
+module.exports = app;
 
 // listen on port (production or localhost)
-app.listen(process.env.PORT || 3000, function() {
-  console.log('server started');
-});
+// only if this was the main file run (vs required elsewhere)
+if (module.parent === null) {
+  app.listen(process.env.PORT || 3000, function() {
+    console.log('server started');
+  });
+}

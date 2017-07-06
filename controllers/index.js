@@ -3,4 +3,4 @@ module.exports = {
   wines: require('./winesCtrl'),
   todos: require('./todosCtrl'),
   pokemon: require('./pokemonCtrl')
-}
+};
