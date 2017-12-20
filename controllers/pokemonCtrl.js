@@ -14,7 +14,7 @@ module.exports = {
 
   create: (req,res) => {
     var newPokemon = req.body;
-    newPokemon.create(newPokemon, function (err, savedPokemon) {
+    Pokemon.create(newPokemon, function (err, savedPokemon) {
       err ? res.status(500).json({ error: err.message }) :
         res.status(201).json(savedPokemon);
     });
