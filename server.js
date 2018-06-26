@@ -35,47 +35,47 @@ var ctrl = require('./controllers');
  */
 
 // get all books
-app.route('/books').get(ctrl.books.index)
+app.route('/api/books').get(ctrl.books.index)
   .post(ctrl.books.create);
 
-app.get('/books/nuke', ctrl.books.nuke);
+app.get('/api/books/nuke', ctrl.books.nuke);
 
-app.route('/books/:bookId')
+app.route('/api/books/:bookId')
   .get(ctrl.books.show)
   .put(ctrl.books.update)
   .delete(ctrl.books.destroy);
 
 
 
-app.route('/pokemon')
+app.route('/api/pokemon')
   .get(ctrl.pokemon.index)
   .post(ctrl.pokemon.create)
 
-app.get('/pokemon/nuke', ctrl.pokemon.nuke);
+app.get('/api/pokemon/nuke', ctrl.pokemon.nuke);
 
-app.route('/pokemon/:pokemonId')
+app.route('/api/pokemon/:pokemonId')
   .get(ctrl.pokemon.show)
   .put(ctrl.pokemon.update)
   .delete(ctrl.pokemon.destroy);
 
-app.route('/wines')
+app.route('/api/wines')
   .get(ctrl.wines.index)
   .post(ctrl.wines.create);
 
-app.get('/wines/nuke', ctrl.wines.nuke);
+app.get('/api/wines/nuke', ctrl.wines.nuke);
 
-app.route('/wines/:wineId')
+app.route('/api/wines/:wineId')
   .get(ctrl.wines.show)
   .put(ctrl.wines.update)
   .delete(ctrl.wines.destroy);
 
-app.route('/todos')
+app.route('/api/todos')
   .get(ctrl.todos.index)
   .post(ctrl.todos.create);
 
-app.get('/todos/nuke', ctrl.todos.nuke);
+app.get('/api/todos/nuke', ctrl.todos.nuke);
 
-app.route('/todos/:todoId')
+app.route('/api/todos/:todoId')
   .get(ctrl.todos.show)
   .put(ctrl.todos.update)
   .delete(ctrl.todos.destroy);
