@@ -8,8 +8,8 @@ module.exports = {
   index: function index(req,res) {
     Book.find(function (err, allBooks) {
       err ? res.status(500).json({ error: err.message }) :
-        Watcher.tally('INDEX','Book');
-        res.json({ books: allBooks });
+        (Watcher.tally('INDEX','Book'),
+        res.json({ books: allBooks }));
     });
   },
 
@@ -17,8 +17,8 @@ module.exports = {
       var newBook = req.body;
       Book.create(newBook, function (err, savedBook) {
         err ? res.status(500).json({ error: err.message }) :
-          Watcher.tally('CREATE','Book');
-          res.status(201).json(savedBook);
+          (Watcher.tally('CREATE','Book'),
+          res.status(201).json(savedBook));
       });
   },
 

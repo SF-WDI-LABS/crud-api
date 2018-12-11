@@ -15,7 +15,7 @@ module.exports = {
 
   create: function (req,res) {
       var newWine = req.body;
-      newWine.create(newWine, function (err, savedWine) {
+      Wine.create(newWine, function (err, savedWine) {
         err ? res.status(500).json({ error: err.message }) :
           res.status(201).json(savedWine);
       });
